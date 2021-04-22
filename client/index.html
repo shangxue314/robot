@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>聊天机器人</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="app">
+        <ul v-if="dialoglist.length" v-cloak>
+            <li v-for="item,index in dialoglist" ref="li" :class="[item.photoIndex?'robot':'me']" :key="index"><img :src="photos[item.photoIndex]"><span>{{item.msg}}</span></li>
+        </ul>
+        <footer ref="footer">
+            <input type="text" v-model="msg" @keyup.enter="sendMsg" @focus="focusMsg">
+            <button @click="sendMsg">发送</button>
+        </footer>
+    </div>
+    <script src="//m.tk.cn/promo/public_js/vue.min.js"></script>
+    <script src="//m.tk.cn/promo/public_js/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
